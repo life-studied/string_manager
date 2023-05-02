@@ -1,2 +1,50 @@
 # string_manager
 字符串工具类，内置一些常见的字符串操作
+
+## Interface
+
+​	函数接口分为类成员函数和静态成员函数两个版本。
+
+### Class version
+
+* getNewline：return a new line from the **initial** text 
+* replaceAll：return the replaced text from **initial** text 
+* parseStrToWords：return the vector of string from the **initial** text splited by Non-English character
+
+### Static version
+
+* replaceAll：return the replaced text from the **given** text
+* parseStrToWords：return the vector of string from the **given** text splited by Non-English character
+
+## Usage(class version)
+
+```C++
+#include <iostream>
+#include "string_manager.h"
+using namespace std;
+
+int main()
+{
+	string_manager sm(
+        "The Benefits of Regular Exercise\n"
+        "Regular exercise is an essential component of a healthy lifestyle.Studies have shown that people who engage in regular physical activity are less likely to develop chronic diseases such as obesity, heart disease, and diabetes.In addition to its health benefits, exercise can also improve your mood, boost your energy levels, and help you sleep better at night.\n"
+        "One of the main benefits of regular exercise is its ability to help control weight.Physical activity burns calories, helping you to maintain a healthy weight or lose excess body fat.Exercise also increases muscle mass, which further promotes weight loss by boosting your metabolism.\n"
+        "Regular exercise can also help reduce your risk of developing heart disease.Cardiovascular exercise, such as running or cycling, strengthens the heartand improves circulation.This can reduce your risk of high blood pressure, stroke, and other cardiovascular diseases.\n"
+        "In addition to its physical benefits, exercise can also improve your mental health.Exercise has been shown to reduce symptoms of anxietyand depression, and can even help prevent these conditions from developing in the first place.This is because exercise releases endorphins, which are natural chemicals that promote feelings of happinessand well - being.\n"
+        "Finally, regular exercise can also improve your sleep quality.Studies have shown that people who engage in regular physical activity tend to fall asleep fasterand enjoy more restful sleep compared to those who are sedentary.This is because exercise helps to regulate your circadian rhythm, which is the body’s internal clock that regulates sleepand wake cycles.\n"
+        "In conclusion, regular exercise is essential for maintaining good healthand well - being.It can help you control your weight, reduce your risk of chronic diseases, improve your mental health, and promote better sleep.So next time you’re feeling sluggish, take a walk or hit the gym – your body will thank you!");
+    string newline;
+    while ((newline = sm.getNewline()) != string_manager::Tend)
+    {
+        cout << newline;
+    }
+    cout << endl << endl << endl;
+    cout << sm.replaceAll("the", "hhhhhh");
+    cout << endl << endl << endl;
+    for (auto i : sm.parseStrToWords())
+        cout << i << endl;
+    return 0;
+}
+
+```
+
